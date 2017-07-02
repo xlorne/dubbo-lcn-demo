@@ -54,7 +54,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>com.lorne.tx</groupId>
             <artifactId>dubbo-transaction</artifactId>
