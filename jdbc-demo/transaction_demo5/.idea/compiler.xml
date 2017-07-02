@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="transaction_demo2" />
+        <module name="transaction_demo3" />
+        <module name="tx2" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="transaction_demo2" target="1.7" />
+      <module name="transaction_demo3" target="1.7" />
+      <module name="tx2" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

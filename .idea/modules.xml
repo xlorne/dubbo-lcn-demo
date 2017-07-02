@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/dubbo-lcn-demo.iml" filepath="$PROJECT_DIR$/.idea/dubbo-lcn-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc-demo/transaction_demo1/transaction_demo1.iml" filepath="$PROJECT_DIR$/jdbc-demo/transaction_demo1/transaction_demo1.iml" />
+      <module fileurl="file://E:\developer\idea\dubbo-lcn-demo\transaction_demo1\transaction_demo1.iml" filepath="E:\developer\idea\dubbo-lcn-demo\transaction_demo1\transaction_demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc-demo/transaction_demo2/transaction_demo2.iml" filepath="$PROJECT_DIR$/jdbc-demo/transaction_demo2/transaction_demo2.iml" />
+      <module fileurl="file://E:\developer\idea\dubbo-lcn-demo\transaction_demo2\transaction_demo2.iml" filepath="E:\developer\idea\dubbo-lcn-demo\transaction_demo2\transaction_demo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc-demo/transaction_demo3/transaction_demo3.iml" filepath="$PROJECT_DIR$/jdbc-demo/transaction_demo3/transaction_demo3.iml" />
+      <module fileurl="file://E:\developer\idea\dubbo-lcn-demo\transaction_demo3\transaction_demo3.iml" filepath="E:\developer\idea\dubbo-lcn-demo\transaction_demo3\transaction_demo3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc-demo/transaction_demo4/transaction_demo4.iml" filepath="$PROJECT_DIR$/jdbc-demo/transaction_demo4/transaction_demo4.iml" />
+      <module fileurl="file://E:\developer\idea\dubbo-lcn-demo\transaction_demo4\transaction_demo4.iml" filepath="E:\developer\idea\dubbo-lcn-demo\transaction_demo4\transaction_demo4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc-demo/transaction_demo5/transaction_demo5.iml" filepath="$PROJECT_DIR$/jdbc-demo/transaction_demo5/transaction_demo5.iml" />
+      <module fileurl="file://E:\developer\idea\dubbo-lcn-demo\transaction_demo5\transaction_demo5.iml" filepath="E:\developer\idea\dubbo-lcn-demo\transaction_demo5\transaction_demo5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hibernate-demo/transaction_hibernate_demo1/transaction_hibernate_demo1.iml" filepath="$PROJECT_DIR$/hibernate-demo/transaction_hibernate_demo1/transaction_hibernate_demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hibernate-demo/transaction_hibernate_demo2/transaction_hibernate_demo2.iml" filepath="$PROJECT_DIR$/hibernate-demo/transaction_hibernate_demo2/transaction_hibernate_demo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-demo/transaction_mybatis_demo1/transaction_mybatis_demo1.iml" filepath="$PROJECT_DIR$/mybatis-demo/transaction_mybatis_demo1/transaction_mybatis_demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-demo/transaction_mybatis_demo2/transaction_mybatis_demo2.iml" filepath="$PROJECT_DIR$/mybatis-demo/transaction_mybatis_demo2/transaction_mybatis_demo2.iml" />
+    </modules>
+  </component>
+</project>

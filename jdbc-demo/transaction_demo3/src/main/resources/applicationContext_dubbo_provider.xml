@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+>
+
+    <dubbo:application name="tx-transaction3"   />
+
+    <dubbo:registry protocol="zookeeper" address="192.168.3.102:2181" />
+
+    <dubbo:consumer  filter="transactionFilter" />
+
+    <dubbo:reference timeout="5000" interface="com.demo.service.Test4Service" id="test4Service" />
+
+    <dubbo:reference timeout="5000" interface="com.demo.service.Test5Service" id="test5Service" />
+
+    <dubbo:service interface="com.demo.service.Test3Service" ref="test3Service"  />
+
+    <bean id="test3Service" class="com.demo.service.impl.Test3ServiceImpl"   />
+
+    <dubbo:protocol accesslog="true" name="dubbo" port="20883" host="192.168.3.102"  />
+
+
+</beans>

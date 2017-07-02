@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="transaction-hibernate-demo1" />
+        <module name="transaction-hibernate-demo2" />
+        <module name="transaction_demo1" />
+        <module name="transaction_demo2" />
+        <module name="transaction_demo2 (1)" />
+        <module name="transaction_demo2 (2)" />
+        <module name="transaction_demo2 (3)" />
+        <module name="transaction_demo3" />
+        <module name="transaction_demo4" />
+        <module name="transaction_demo5" />
+        <module name="transaction_hibernate_demo1" />
+        <module name="transaction_hibernate_demo2" />
+        <module name="transaction_mybatis_demo1" />
+        <module name="transaction_mybatis_demo2" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="transaction-hibernate-demo1" target="1.7" />
+      <module name="transaction-hibernate-demo2" target="1.7" />
+      <module name="transaction_demo1" target="1.7" />
+      <module name="transaction_demo2" target="1.7" />
+      <module name="transaction_demo2 (1)" target="1.7" />
+      <module name="transaction_demo2 (2)" target="1.7" />
+      <module name="transaction_demo2 (3)" target="1.7" />
+      <module name="transaction_demo3" target="1.7" />
+      <module name="transaction_demo4" target="1.7" />
+      <module name="transaction_demo5" target="1.7" />
+      <module name="transaction_hibernate_demo1" target="1.7" />
+      <module name="transaction_hibernate_demo2" target="1.7" />
+      <module name="transaction_mybatis_demo1" target="1.7" />
+      <module name="transaction_mybatis_demo2" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

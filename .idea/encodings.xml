@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/hibernate-demo/transaction_hibernate_demo1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hibernate-demo/transaction_hibernate_demo2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jdbc-demo/transaction_demo1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jdbc-demo/transaction_demo2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jdbc-demo/transaction_demo3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jdbc-demo/transaction_demo4" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jdbc-demo/transaction_demo5" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-demo/transaction_mybatis_demo1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-demo/transaction_mybatis_demo2" charset="UTF-8" />
+  </component>
+</project>

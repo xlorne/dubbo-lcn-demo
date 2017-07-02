@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <repositories>
+        <repository>
+            <id>lorne</id>
+            <url>https://1991wangliang.github.io/repository</url>
+        </repository>
+    </repositories>
+
+    <groupId>com.demo</groupId>
+    <artifactId>transaction_mybatis_demo2</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.lorne.core</groupId>
+            <artifactId>lorne_core</artifactId>
+            <version>1.0.0.RELEASE</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.29</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>com.lorne.tx</groupId>
+            <artifactId>dubbo-transaction</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
+
+
+        <!-- mybatis核心包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.6</version>
+        </dependency>
+        <!-- mybatis/spring包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+    </dependencies>
+</project>
