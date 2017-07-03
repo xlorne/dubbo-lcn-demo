@@ -32,7 +32,7 @@ public class TestServiceImpl implements TestService {
         testDao.save(test);
 
 
-        String res =  test2Service.test();
+        String res =  test2Service.test();//远程调用方
 
         int v = 100/0;
 
