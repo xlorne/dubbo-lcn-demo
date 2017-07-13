@@ -34,16 +34,11 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.lorne.mysql</groupId>
-            <artifactId>lorne_mysql</artifactId>
-            <version>1.0.0.RELEASE</version>
-        </dependency>
 
         <dependency>
             <groupId>com.lorne.tx</groupId>
             <artifactId>dubbo-transaction</artifactId>
-            <version>2.1.0.RELEASE</version>
+            <version>2.2.0.RELEASE</version>
         </dependency>
 
 

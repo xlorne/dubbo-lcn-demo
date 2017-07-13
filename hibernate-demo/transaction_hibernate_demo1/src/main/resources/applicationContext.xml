@@ -33,6 +33,6 @@
 
 
     <!-- Aspect -->
-    <aop:aspectj-autoproxy expose-proxy="true"/>
+    <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
 
 </beans>
