@@ -4,6 +4,7 @@ import com.demo.dao.TestDao;
 import com.demo.service.Test3Service;
 import com.demo.service.Test4Service;
 import com.demo.service.Test5Service;
+import com.lorne.tx.annotation.TxTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class Test3ServiceImpl  implements Test3Service {
 
 
     @Override
-   // @TxTransaction
+    @TxTransaction
     public String test() {
 
         String name = "hello_demo3";

@@ -87,7 +87,7 @@
 
 
     <aop:config>
-        <aop:pointcut id="allManagerMethod" expression="execution(* com.**.service.impl.*Impl.*(..))"/>
+        <aop:pointcut id="allManagerMethod" expression="!@annotation(com.lorne.tx.annotation.TxTransaction) and execution(* com.**.service.impl.*Impl.*(..))"/>
         <aop:advisor  order="100" advice-ref="txAdvice" pointcut-ref="allManagerMethod"/>
     </aop:config>
 

@@ -16,9 +16,7 @@
 
     <dubbo:protocol accesslog="true" name="dubbo" port="20882" host="192.168.3.102" />
 
-    <dubbo:service interface="com.demo.service.Test2Service" ref="test2Service"  />
-
-    <bean id="test2Service" class="com.demo.service.impl.Test2ServiceImpl"   />
+    <dubbo:service interface="com.demo.service.Test2Service" ref="test2ServiceImpl"  />
 
 
 </beans>
