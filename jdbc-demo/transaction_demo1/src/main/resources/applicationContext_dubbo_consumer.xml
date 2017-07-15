@@ -11,7 +11,7 @@
     <dubbo:application name="tx-transaction1"   />
 
     <!--所有参与分布式事务的模块以及TxManager都必须要在同一个服务下-->
-    <dubbo:registry protocol="zookeeper" address="192.168.3.102:2181" />
+    <dubbo:registry protocol="zookeeper" address="192.168.3.104:2181" />
 
     <dubbo:consumer  filter="transactionFilter" />
 
@@ -20,6 +20,6 @@
     <dubbo:reference timeout="5000" interface="com.demo.service.Test3Service" id="test3Service" />
 
 
-    <dubbo:protocol accesslog="true" name="dubbo" port="20881"  host="192.168.3.102"  />
+    <dubbo:protocol accesslog="true" name="dubbo" port="20881"  host="192.168.3.104"  />
 
 </beans>

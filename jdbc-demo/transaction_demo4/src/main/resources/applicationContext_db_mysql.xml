@@ -86,21 +86,5 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <tx:advice id="txAdvice">
-        <tx:attributes>
-            <tx:method name="get*" read-only="true"  />
-            <tx:method name="find*" read-only="true"/>
-            <tx:method name="load*" read-only="true"/>
-            <tx:method name="query*" read-only="true"/>
-            <tx:method name="select*" read-only="true"/>
-            <tx:method name="*" rollback-for="com.le.core.framework.exception.LEException"/>
-        </tx:attributes>
-    </tx:advice>
-
-
-    <aop:config>
-        <aop:pointcut id="allManagerMethod" expression="!@annotation(com.lorne.tx.annotation.TxTransaction) and execution(* com.**.service.impl.*Impl.*(..))"/>
-        <aop:advisor  order="100" advice-ref="txAdvice" pointcut-ref="allManagerMethod"/>
-    </aop:config>
 
 </beans>

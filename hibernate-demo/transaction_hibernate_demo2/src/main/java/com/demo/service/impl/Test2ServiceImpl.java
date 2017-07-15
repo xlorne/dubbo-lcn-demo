@@ -18,7 +18,6 @@ public class Test2ServiceImpl implements Test2Service {
     private TestDao testDao;
 
     @Override
-    @TxTransaction
     public String test() {
         String name = "hello_demo2";
         Test test = new Test();

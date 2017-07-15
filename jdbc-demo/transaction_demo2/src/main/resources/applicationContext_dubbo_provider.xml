@@ -10,9 +10,9 @@
 
     <dubbo:application name="tx-transaction2"   />
 
-    <dubbo:registry protocol="zookeeper" address="192.168.3.102:2181" />
+    <dubbo:registry protocol="zookeeper" address="192.168.3.104:2181" />
 
-    <dubbo:protocol accesslog="true" name="dubbo" port="20882"  host="192.168.3.102"  />
+    <dubbo:protocol accesslog="true" name="dubbo" port="20882"  host="192.168.3.104"  />
 
     <dubbo:consumer  filter="transactionFilter" />
 
