@@ -19,7 +19,7 @@
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="5"/>
         <!-- 连接池最大并发使用连接数量 -->
-        <property name="maxActive" value="100"/>
+        <property name="maxActive" value="50"/>
         <!-- 连接池最小空闲 -->
         <property name="minIdle" value="1"/>
         <!-- 获取连接最大等待时间 -->
@@ -52,9 +52,14 @@
     </bean>
 
 
+    <bean name="lcnDataSourceProxy" class="com.lorne.tx.db.LCNDataSourceProxy">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="maxCount" value="20"/>
+    </bean>
+
     <!-- 配置hibernate session工厂 -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="lcnDataSourceProxy" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
@@ -81,6 +86,6 @@
 
 
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven order="2" transaction-manager="transactionManager"/>
 
 </beans>

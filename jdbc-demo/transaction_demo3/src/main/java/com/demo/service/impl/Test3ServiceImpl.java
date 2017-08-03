@@ -6,6 +6,7 @@ import com.demo.service.Test4Service;
 import com.demo.service.Test5Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by lorne on 2017/6/7.
@@ -25,6 +26,7 @@ public class Test3ServiceImpl implements Test3Service {
 
 
     @Override
+    @Transactional
     public String test() {
 
         String name = "hello_demo3";

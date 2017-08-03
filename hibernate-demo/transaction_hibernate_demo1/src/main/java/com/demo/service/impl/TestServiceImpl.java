@@ -7,6 +7,7 @@ import com.demo.service.TestService;
 import com.lorne.tx.annotation.TxTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by lorne on 2017/6/7.
@@ -24,6 +25,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     @TxTransaction
+    @Transactional
     public String hello() {
 
         String name = "hello_demo1";

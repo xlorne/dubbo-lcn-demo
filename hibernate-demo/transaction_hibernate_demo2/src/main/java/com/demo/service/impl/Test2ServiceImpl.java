@@ -6,6 +6,7 @@ import com.demo.service.Test2Service;
 import com.lorne.tx.annotation.TxTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by lorne on 2017/6/14.
@@ -18,6 +19,7 @@ public class Test2ServiceImpl implements Test2Service {
     private TestDao testDao;
 
     @Override
+    @Transactional
     public String test() {
         String name = "hello_demo2";
         Test test = new Test();
