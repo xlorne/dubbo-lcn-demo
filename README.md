@@ -17,7 +17,7 @@ demo1作为分布式事务的发起者，调用了demo2 demo3，demo3有调用�
 
 ## 使用步骤
 
-1. 启动[TxManager](https://github.com/1991wangliang/tx-manager-war) 
+1. 启动[TxManager](https://github.com/1991wangliang/tx-lcn/tree/master/tx-manager) 
 
 2. 添加配置maven库与tx-lcn库
 
@@ -41,14 +41,14 @@ maven jar地址
 		</dependency>
 
 ```
-最新版本为 `2.2.0.RELEASE`
+最新版本为 `2.3.0.RELEASE`
 
 3. 添加tx.properties
 
 ```
 
 #txmanager地址  http://txmanager ip:txmanager port/txmanager name/tx/manager/getServer 写法固定
-url=http://127.0.0.1:8080/tx/manager/getServer
+url=http://127.0.0.1:8761/tx/manager/getServer
 
 #事务补偿记录配置
 
@@ -56,6 +56,9 @@ url=http://127.0.0.1:8080/tx/manager/getServer
 compensate.type=db
 #模块前缀名称 （同模块在做负载均衡时需要区分前缀字段）
 ompensate.prefix = xxx
+#可以优雅关闭 （0：不支持，1：支持）
+graceful.close = 1
+
 #db 数据库链接地址
 compensate.db.url = jdbc:mysql://localhost:3306/test
 #db 数据库类型 目前支持 mysql oracle sqlserver
@@ -72,25 +75,33 @@ compensate.db.password = root
 
 ```
 
-4. 添加事务拦截器
+4. 添加事务拦截器，确保拦截器的优先级高于spring事务优先级
 ```java
 
 @Aspect
 @Component
-public class TxTransactionInterceptor {
+public class TxTransactionInterceptor  implements Ordered{
 
     @Autowired
     private TxManagerInterceptor txManagerInterceptor;
 
-    @Around("execution(* com.example.demo.service.impl.*Impl.*(..))")
+    @Override
+    public int getOrder() {
+        return 1;
+    }
+
+    @Around("execution(* com.demo.service.impl.*Impl.*(..))")
     public Object around(ProceedingJoinPoint point)throws Throwable{
         return txManagerInterceptor.around(point);
     }
 }
 
-```
 
-注意：@Around 拦截地址不能包含com.lorne.tx.*
+```
+注意：  
+@Around 拦截地址不能包含com.lorne.tx.*   
+LCN是不控制事务。切面仅用于识别LCN分布式事务的作用。
+
 
 5. 添加`META-INF\dubbo\com.alibaba.dubbo.rpc.Filter`配置。
 
@@ -100,8 +111,17 @@ transactionFilter=com.lorne.tx.dubbo.filter.TransactionFilter
 
 ```
 
-在dubbo配置文件下添加` <dubbo:consumer  filter="transactionFilter" />`
+在dubbo配置文件下添加
+```
+ <!-- 请求拦截器-->
+ <dubbo:consumer  filter="transactionFilter" />
+ 
+ <!-- 拒绝重复调用-->
+ <dubbo:provider delay="-1" timeout="6000"  retries="0"/>
+ 
+```
 
+ 
 
 6. 创建数据库，项目都是依赖相同的数据库，创建一次其他的demo下将不再需要重复创建。mysql数据库，库名称test
 
@@ -120,49 +140,85 @@ CREATE TABLE `t_test` (
 
 ```
 
-7. 若spring下配置了`<aop:aspectj-autoproxy expose-proxy="true"/>`增加`proxy-target-class="true" `
+7. spring配置说明
 
+若spring下面配置了`<aop:aspectj-autoproxy expose-proxy="true"/>`增加`proxy-target-class="true" `
+
+如下：
 ```
-
  <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true" />
- 
-```
-
-8. 关于事务切面的特殊处理
-
-
-方法一：将本地事务与分布式事务排斥
 
 ```
 
-<aop:pointcut id="allManagerMethod" expression="!@annotation(com.lorne.tx.annotation.TxTransaction) and execution(* com.**.service.impl.*Impl.*(..))"/>
- 
-```
-
-方法二：将本地事务与分布式事务排斥
+8. 连接池配置，**后面操作的连接池都必须是LCN代理连接池**
 
 ```
-//本地事务
-expression="execution(* com.demo.service.impl.*Impl.*(..))" 
+    <!--mysql druid连接池配置-->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="5"/>
+        <!-- 连接池最大并发使用连接数量 -->
+        <property name="maxActive" value="50"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="1"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000"/>
+        <!-- 打开pscache功能  在mysql5.5以上版本支持 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <!-- 指定每个连接上的pscache的大小 -->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="33"/>
+        <property name="validationQuery" value="select 1"/>
+        <property name="testOnBorrow" value="false"/>
+        <!-- 归还连接时执行validationQuery  ，检测是否有效，设置为true这样会降低性能 -->
+        <property name="testOnReturn" value="false"/>
+        <!-- 申请链接的时间是否检测 -->
+        <property name="testWhileIdle" value="true"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="25200000"/>
+        <!-- 打开超过时间限制是否回收功能 -->
+        <property name="removeAbandoned" value="true"/>
+        <!-- 超过多长时间 1800秒，也就是30分钟 -->
+        <property name="removeAbandonedTimeout" value="1800"/>
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="true"/>
+        <!-- 监控数据库 -->
+        <property name="filters" value="stat"/>
+        <!--<property name="filters" value="mergeStat"/>-->
+        <!-- 慢sql监控 10毫秒 -->
+        <!--<property name="connectionProperties" value="druid.stat.slowSqlMillis=10" />-->
+    </bean>
+        
+    <!--lcn代理连接池配置-->
+    <bean name="lcnDataSourceProxy" class="com.lorne.tx.db.LCNDataSourceProxy">
+        <property name="dataSource" ref="dataSource"/>
+          <!-- 分布式事务参与的最大连接数，确保不要超过普通连接池的最大值即可 -->
+        <property name="maxCount" value="20"/>
+    </bean>
+    
+    
+    <!--jdbcTemplate -->
+    <bean id="jdbcTemplate"
+          class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+            <ref bean="lcnDataSourceProxy"/>
+        </property>
+    </bean>
+        
+    <!--jdbc事务配置 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="lcnDataSourceProxy" />
+    </bean>
+    
 
-//分布式事务
-expression="execution(* com.demo.lcn.impl.*Impl.*(..))" 
- 
+
+    
 ```
-
-
-方法三：将本地事务去掉，通过注解的方式使用
-
-关于为什么不兼容本地事务：
-
-本地事务与分布式事务是兼容的，但是由于分布式事务处理的时候是在本地事务基础上开启了一个线程处理的事务操作。这样做以后其实该业务方法完全可以不支持事务的，分布式事务在线程下处理了事务。在高并发的情况下这样的做法会耗尽链接池资源，因此做如下配置。
-
-也是由于该原因，因此需要在所有参与分布式事务的业务模块上都要添加TxTransaction注解。注解只需要在模块的分布式事务开始方法上添加即可。
-
-例如：
-   若存在A模块调用B模块的分布式事务配置，若A模块方法调用关系是A下的a1做为开始方法，调用了本地的a2 a3方法。然后在a4远程调用的B模块的b1方法，且B模块的调用关系也是由b1调用了b2 b3。
-   那么关于分布式事务注解的配置的时候只需要配置A模块的a1方法下，B模块的b1方法下。其他的方法均无须做任何处理。
-   
 
 ## 注意事项
 
