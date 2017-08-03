@@ -50,6 +50,7 @@
         </dependency>
 
 
+
         <!-- hibernate4 -->
         <dependency>
             <groupId>org.hibernate</groupId>
