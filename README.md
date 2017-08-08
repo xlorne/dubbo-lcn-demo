@@ -110,7 +110,7 @@ transactionFilter=com.lorne.tx.dubbo.filter.TransactionFilter
  <dubbo:consumer  filter="transactionFilter" />
  
  <!-- 拒绝重复调用-->
- <dubbo:provider delay="-1" timeout="6000"  retries="0"/>
+ <dubbo:provider delay="-1" timeout="6000"  port="20881"  retries="0"/>
  
 ```
 
