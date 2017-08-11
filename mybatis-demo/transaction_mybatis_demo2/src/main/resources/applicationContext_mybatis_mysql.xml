@@ -53,9 +53,9 @@
 
     <!--mysql-->
     <bean name="compensateDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${db.url}"/>
-        <property name="username" value="${db.username}"/>
-        <property name="password" value="${db.password}"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="5"/>
         <!-- 连接池最大并发使用连接数量 -->
