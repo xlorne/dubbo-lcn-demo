@@ -52,14 +52,14 @@
     </bean>
 
     <!--mysql-->
-    <bean name="compensateDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean name="compensateDruidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="url" value="${db.url}"/>
         <property name="username" value="${db.username}"/>
         <property name="password" value="${db.password}"/>
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="5"/>
+        <property name="initialSize" value="1"/>
         <!-- 连接池最大并发使用连接数量 -->
-        <property name="maxActive" value="50"/>
+        <property name="maxActive" value="5"/>
         <!-- 连接池最小空闲 -->
         <property name="minIdle" value="1"/>
         <!-- 获取连接最大等待时间 -->
@@ -89,6 +89,10 @@
         <!--<property name="filters" value="mergeStat"/>-->
         <!-- 慢sql监控 10毫秒 -->
         <!--<property name="connectionProperties" value="druid.stat.slowSqlMillis=10" />-->
+    </bean>
+
+    <bean name="compensateDataSource" class="com.lorne.tx.compensate.repository.CompensateDataSource">
+        <property name="dataSource" ref="compensateDruidDataSource"></property>
     </bean>
 
 
