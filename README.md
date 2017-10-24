@@ -17,31 +17,19 @@ demo1作为分布式事务的发起者，调用了demo2 demo3，demo3有调用�
 
 ## 使用步骤
 
-1. 启动[TxManager](https://github.com/1991wangliang/tx-lcn/tree/master/tx-manager) 
+1. 见wiki[TxManager启动说明](https://github.com/1991wangliang/tx-lcn/wiki) 
 
-2. 添加配置maven库与tx-lcn库
-
-maven私有仓库地址：
-```
-	<repositories>
-		<repository>
-			<id>lorne</id>
-			<url>https://1991wangliang.github.io/repository</url>
-		</repository>
-	</repositories>
+2. 添加配置maven配置
 
 ```
-maven jar地址 
-
+    <dependency>
+        <groupId>com.github.1991wangliang</groupId>
+        <artifactId>dubbo-transaction</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    
 ```
-		<dependency>
-			<groupId>com.lorne.tx</groupId>
-			<artifactId>dubbo-transaction</artifactId>
-			<version>x.x.x.RELEASE</version>
-		</dependency>
 
-```
-最新版本为 `3.0.0.RELEASE`
 
 3. 添加tx.properties
 
