@@ -31,18 +31,6 @@ CREATE TABLE `t_test` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `t_test` WRITE;
-/*!40000 ALTER TABLE `t_test` DISABLE KEYS */;
-
-INSERT INTO `t_test` (`id`, `name`)
-VALUES
-	(1,'1'),
-	(2,'2');
-
-/*!40000 ALTER TABLE `t_test` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

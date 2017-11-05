@@ -13,6 +13,7 @@
 
     <mvc:view-controller path="/" view-name="index"/>
 
+
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"

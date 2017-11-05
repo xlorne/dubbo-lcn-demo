@@ -30,4 +30,7 @@
     <!-- Aspect -->
     <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
 
+    <import resource="applicationContext_dubbo_provider.xml"/>
+    <import resource="applicationContext_db_mysql.xml"/>
+
 </beans>

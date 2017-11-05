@@ -21,4 +21,8 @@
     <!-- Aspect -->
     <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
 
+    <import resource="applicationContext_dubbo_provider.xml"/>
+    <import resource="applicationContext_mybatis_mysql.xml"/>
+
+
 </beans>

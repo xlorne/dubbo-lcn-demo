@@ -12,14 +12,6 @@
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
        default-autowire="byName">
 
-    <!--<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="locations">-->
-            <!--<list>-->
-                <!--<value>classpath:db.properties</value>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-
 
     <!-- 引入属性文件 -->
     <context:property-placeholder location="classpath:db.properties" />
@@ -34,5 +26,8 @@
 
     <!-- Aspect -->
     <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
+
+    <import resource="applicationContext_dubbo_consumer.xml"/>
+    <import resource="applicationContext_hibernate_mysql.xml"/>
 
 </beans>

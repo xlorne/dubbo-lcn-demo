@@ -36,7 +36,7 @@ public class TestServiceImpl implements TestService {
 
         String res =  test2Service.test();//远程调用方
 
-        int v = 100/0;
+      //  int v = 100/0;
 
         return res;
     }

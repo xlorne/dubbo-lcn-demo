@@ -267,7 +267,7 @@ CREATE TABLE `t_test` (
 
 demo1/demo2类型:
 
-运行demo2下的TransactionTest，再运行demo1下的TransactionTest。
+运行demo2下的main包的XXXDemo的main函数，再在tomcat运行demo1,然后访问http://ip:port/xxx_demo/index地址。
 
 效果：/by zero 异常所有事务都回滚。
 
@@ -275,7 +275,7 @@ demo1/demo2类型:
 
 demo1/2/3/4/5类型:
  
-运行demo5下的TransactionTest，再运行demo4下的TransactionTest，再运行demo3下的TransactionTest，再运行demo2下的TransactionTest，再运行demo1下的TransactionTest。
+分别运行demo5、demo4、demo3、demo2下的main包的XXXDemo的main函数，再在tomcat运行demo1,然后访问http://ip:port/xxx_demo/index地址。
 
 效果：/by zero 异常所有事务都回滚。
  

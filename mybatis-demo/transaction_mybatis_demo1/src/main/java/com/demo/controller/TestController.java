@@ -6,17 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * Created by lorne on 2017/7/6.
  */
 @Controller
 public class TestController {
 
-
     @Autowired
     private TestService testService;
+
 
     @RequestMapping("/index")
     public String index(Model model){
