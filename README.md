@@ -1,5 +1,6 @@
 # dubbo LCN分布式事务示例demo
 
+Dubbo Demo使用讲解地址：[http://www.txlcn.org/video.html](http://www.txlcn.org/video.html)  
 
 ## 使用说明
 
